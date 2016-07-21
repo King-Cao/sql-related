@@ -123,7 +123,7 @@ BEGIN
   CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL - 3 DAY), 'eventdb','tb_events');
   CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL - 2 DAY), 'eventdb','tb_events');
   CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL - 1 DAY), 'eventdb','tb_events');
-  CALL sp_create_partition(NOW(), 'eventdb’,'tb_events');
+  CALL sp_create_partition(NOW(), 'eventdb','tb_events');
   CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL 1 DAY), 'eventdb','tb_events');
   CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL 2 DAY), 'eventdb','tb_events');
   CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL 3 DAY), 'eventdb','tb_events');
@@ -145,5 +145,7 @@ CALL sp_create_partition(DATE_ADD(NOW(), INTERVAL 3 DAY), 'eventdb','tb_events')
 
 DELIMITER ;
 
-— Check the partition status, TABLE_SCHEMA: database name, TABLE_NAME: table name.
+--
+-- Check the partition status, TABLE_SCHEMA: database name, TABLE_NAME: table name.
+--
 select TABLE_SCHEMA, TABLE_NAME,PARTITION_NAME from INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='eventdb' and table_name='tb_events';  
