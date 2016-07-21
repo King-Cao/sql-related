@@ -79,7 +79,7 @@ BEGIN
   $$
 
 --
--- Procedure to delete one partition by one day
+-- Procedure to delete all partitions older than specific day
 --
 CREATE PROCEDURE sp_drop_partition (day_value datetime, db_name varchar(128), tb_name varchar(128))
 BEGIN
@@ -111,7 +111,7 @@ $$
 
 --
 -- Event to create necessary partition in advance, and rotate the oldest partition: last statement
--- will drop the partition 90 days' ago.
+-- will drop all partitions 90 days' ago.
 --
 CREATE
 EVENT event_auto_partition
